@@ -36,7 +36,7 @@ public class ExperienciaController {
          return new ResponseEntity(list, HttpStatus.OK);
     }
     
-    //@PreAuthorize("hasRole('ADMIN')") 
+    @PreAuthorize("hasRole('ADMIN')") 
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody DtoExperiencia dtoExp){
         if(StringUtils.isBlank(dtoExp.getLugar()))
@@ -63,7 +63,7 @@ public class ExperienciaController {
         return new ResponseEntity(experiencia, HttpStatus.OK);
     }
     
-    //@PreAuthorize("hasRole('ADMIN')") 
+    @PreAuthorize("hasRole('ADMIN')") 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable ("id") int id, @RequestBody DtoExperiencia dtoExp){
         if(!experienciaService.existsById(id))
@@ -83,7 +83,7 @@ public class ExperienciaController {
         return new ResponseEntity(new Mensaje("Experiencia actualizada"), HttpStatus.OK);
     }
     
-    //@PreAuthorize("hasRole('ADMIN')")    
+    @PreAuthorize("hasRole('ADMIN')")    
     @DeleteMapping ("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable ("id") int id){
         if(!experienciaService.existsById(id))

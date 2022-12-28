@@ -35,7 +35,7 @@ public class EducacionController {
          return new ResponseEntity(list, HttpStatus.OK);
     }
     
-    //@PreAuthorize("hasRole('ADMIN')") 
+    @PreAuthorize("hasRole('ADMIN')") 
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody DtoEducacion dtoEdu){
         if(StringUtils.isBlank(dtoEdu.getLugar()))
@@ -62,7 +62,7 @@ public class EducacionController {
         return new ResponseEntity(educacion, HttpStatus.OK);
     }
     
-    //@PreAuthorize("hasRole('ADMIN')") 
+    @PreAuthorize("hasRole('ADMIN')") 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable ("id") int id, @RequestBody DtoEducacion dtoEdu){
         if(!educacionService.existsById(id))
@@ -82,7 +82,7 @@ public class EducacionController {
         return new ResponseEntity(new Mensaje("Educacion actualizada"), HttpStatus.OK);
     }
     
-    //@PreAuthorize("hasRole('ADMIN')")    
+    @PreAuthorize("hasRole('ADMIN')")    
     @DeleteMapping ("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable ("id") int id){
         if(!educacionService.existsById(id))

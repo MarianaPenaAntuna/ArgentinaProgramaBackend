@@ -35,7 +35,7 @@ public class SkillController {
             return new ResponseEntity(list, HttpStatus.OK);
         }
 
-        //@PreAuthorize("hasRole('ADMIN')")
+        @PreAuthorize("hasRole('ADMIN')")
         @PostMapping("/create")
         public ResponseEntity<?> create(@RequestBody DtoSkill dtoSk) {
             if (StringUtils.isBlank(dtoSk.getNombre())) {
@@ -60,7 +60,7 @@ public class SkillController {
             return new ResponseEntity(skill, HttpStatus.OK);
         }
 
-        //@PreAuthorize("hasRole('ADMIN')")
+        @PreAuthorize("hasRole('ADMIN')")
         @PutMapping("/update/{id}")
         public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody DtoSkill dtoSk) {
             if (!skillService.existsById(id)) {
@@ -80,7 +80,7 @@ public class SkillController {
             return new ResponseEntity(new Mensaje("Skill actualizado"), HttpStatus.OK);
         }
 
-        //@PreAuthorize("hasRole('ADMIN')")
+        @PreAuthorize("hasRole('ADMIN')")
         @DeleteMapping("/delete/{id}")
         public ResponseEntity<?> delete(@PathVariable("id") int id) {
             if (!skillService.existsById(id)) {

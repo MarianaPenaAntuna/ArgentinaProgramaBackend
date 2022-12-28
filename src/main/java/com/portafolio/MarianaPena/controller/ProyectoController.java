@@ -35,7 +35,7 @@ public class ProyectoController {
         return new ResponseEntity(list, HttpStatus.OK);
     }
 
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody DtoProyecto dtoProy) {
         if (StringUtils.isBlank(dtoProy.getNombre())) {
@@ -62,7 +62,7 @@ public class ProyectoController {
         return new ResponseEntity(proyecto, HttpStatus.OK);
     }
 
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody DtoProyecto dtoProy) {
         if (!proyectoService.existsById(id)) {
@@ -84,7 +84,7 @@ public class ProyectoController {
         return new ResponseEntity(new Mensaje("Datos del proyecto actualizados"), HttpStatus.OK);
     }
 
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         if (!proyectoService.existsById(id)) {
